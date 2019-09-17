@@ -1,0 +1,26 @@
+/*
+    All the styling for the header
+ */
+
+
+.menu {
+    position: fixed;
+    top:0;
+    right:0;
+    bottom: 0;
+    width: 300px;
+    background: #34495e;
+    transform: translateX(300px);
+}
+
+.header-logo {
+    position: fixed;
+    top:0;
+    left:0;
+    right: 0;
+}
+
+.header-logo img {
+    position: relative;
+    width: 50%;
+}
