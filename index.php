@@ -1,8 +1,7 @@
 <?php
-include 'view/header.php';
-require_once 'controller/Controller.php';
+include 'config.php';
 
-$controller = new Controller();
-$controller->handleRequest();
+require_once 'router.php';
 
-include 'view/footer.php';
+$router = new Router();
+$router->determineDestination();
