@@ -2,12 +2,8 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME}% !-f
 RewriteCond %{REQUEST_FILENAME}% !-d
-
-# check if js/css files are being requested
 RewriteCond %{REQUEST_URI} !\.(ico|gif|jpg|jpeg|png|js|css)$ [NC]
-
 RewriteRule . index.php [L]
-
 </IfModule>
 
 # Prevent file browsing

@@ -13,6 +13,13 @@ class Home {
         include './view/footer.php';
     }
 
+
+    public function test() {
+        include './view/header.php';
+        include './view/test.php';
+        include './view/footer.php';
+    }
+
     public function __destruct() {
     }
 }
