@@ -43,8 +43,8 @@ class DataHandler {
     }
 
     public function updateData($sql){
-        $this->query($sql);
-        return $this->rowCount();
+        $sth = $this->dbh->query($sql);
+        return $sth->rowCount();
     }
 
     public function deleteData($sql){

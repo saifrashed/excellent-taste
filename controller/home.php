@@ -1,22 +1,15 @@
 <?php
-require_once 'model/Logic.php';
+require_once 'model/GeneralLogic.php';
 
 
 class Home {
     public function __construct() {
-        $this->Logic = new Logic();
+        $this->GeneralLogic = new GeneralLogic();
     }
 
     public function index() {
         include './view/header.php';
         include './view/home.php';
-        include './view/footer.php';
-    }
-
-
-    public function test() {
-        include './view/header.php';
-        include './view/test.php';
         include './view/footer.php';
     }
 

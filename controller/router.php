@@ -21,8 +21,8 @@ class Router {
 
         if (is_array($packets)) {
 
-            $packetClass = $packets[4];
-            $packetMethod     = $packets[5];
+            $packetClass  = $packets[3];
+            $packetMethod = $packets[4];
 
             // Fallback class when none are given.
             (!$packetClass) ? $class = 'home' : $class = $packetClass;
@@ -31,19 +31,18 @@ class Router {
             (!$packetMethod) ? $method = 'index' : $method = $packetMethod;
 
             // Offset the packets until parameters are given.
-            $params = array_slice($packets, 6);
+            $params = array_slice($packets, 5);
 
             $this->sendToDestination($class, $method, $params);
         }
     }
 
     /**
+     * Sends to determined location
      *
-     *
-     * @param  [type] $classname [description]
-     * @param  [type] $method    [description]
-     * @param  [type] $params    [description]
-     * @return [type]            [description]
+     * @param  $classname
+     * @param  $method
+     * @param  $params
      */
     public function sendToDestination($classname, $method, $params) {
         $class = APP_DIR . '/controller/' . $classname . '.php';
