@@ -3,7 +3,13 @@
         <h1>Bestelling overzicht</h1>
 
         <div class="actions-bar">
-            <a class="btn btn-primary" href="<?= BESTELLINGEN_CREATE ?>"><i class="fas fa-plus"></i></a>
+            <form action="<?=BESTELLINGEN_CREATE?>/" method="GET" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="tafelnummer" placeholder="Tafel nummer" required>
+                <input  type="hidden" name="datum" value="<?=date('Y/m/d')?>">
+                <input  type="hidden" name="tijd" value="<?=date('H:i:s')?>">
+
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-plus"></i></button>
+            </form>
         </div>
 
         <table class="table">
@@ -25,14 +31,10 @@
                     echo '<td>' . $row['tijd'] . '</td>';
                     echo '<td>';
                     echo '<a class="btn btn-light" href="' . BESTELLINGEN_UPDATE . '/' . $row['bestelling_id'] . '">Wijzigen</a>';
-                    echo '<a class="btn btn-danger" href="' . BESTELLINGEN_DELETE . '/' . $row['bestelling_id'] . '"><i class="fas fa-times"></i></a>';
                     echo '</td>';
                     echo '</tr>';
                 }
             ?>
-
-
         </table>
-
     </div>
 </div>

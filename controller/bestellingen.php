@@ -26,6 +26,11 @@
          */
         public function create() {
 
+            if(!empty($_REQUEST['tafelnummer']) && !empty($_REQUEST['datum']) && !empty($_REQUEST['tijd'])) {
+                $newBestelling = $this->BestellingenLogic->create($_REQUEST['tafelnummer'], $_REQUEST['datum'], $_REQUEST['tijd']);
+                header('Location: '. BESTELLINGEN_UPDATE.'/'.$newBestelling);
+            }
+
             include './view/header.php';
             include './view/bestellingen/bestelling_create.php';
             include './view/footer.php';

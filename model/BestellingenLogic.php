@@ -13,15 +13,15 @@ class BestellingenLogic {
     /**
      * Create business logic for a order
      */
-    public function create() {
-
+    public function create($tableNumber, $date, $time) {
+       return $this->DataHandler->createData('INSERT INTO bestellingen (tafel_nummer, datum_aangemaakt, tijd) VALUES ("'.$tableNumber.'", "'.$date.'", "'.$time.'");');
     }
 
     /**
      * Reads business logic for a order
      */
     public function reads() {
-        return $this->DataHandler->readsData('SELECT * FROM bestellingen;');
+        return $this->DataHandler->readsData('SELECT * FROM bestellingen ORDER BY bestelling_id DESC;');
     }
 
     /**
@@ -48,7 +48,7 @@ class BestellingenLogic {
      * Delete business logic for a order
      */
     public function delete($orderId) {
-        return $this->DataHandler->deleteData('DELETE FROM bestellingen WHERE bestelling_id='.$orderId.';');
+        return $this->DataHandler->deleteData('DELETE FROM bestellingen WHERE bestelling_id="'.$orderId.'";');
     }
 
     public function __destruct() {

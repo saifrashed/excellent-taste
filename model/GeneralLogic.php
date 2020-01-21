@@ -18,8 +18,11 @@
             return $this->DataHandler->readsData('SELECT * FROM bestellingen NATURAL JOIN bestelling_artikelen NATURAL JOIN artikelen WHERE bestelling_id = ' . $orderId . ';');
         }
 
-        /*
+        /**
          * Calculates total price of articles.
+         *
+         * @param $orderId
+         * @return float|int
          */
         public function sumArtikelen($orderId) {
             $result = $this->DataHandler->readsData('SELECT * FROM bestellingen NATURAL JOIN bestelling_artikelen NATURAL JOIN artikelen WHERE bestelling_id = ' . $orderId . ';');
@@ -33,6 +36,12 @@
             return $totaal;
         }
 
+        /**
+         * Returns a table in HTML to be used as menu card to make an order.
+         *
+         * @param $orderId
+         * @return string
+         */
         public function menukaart($orderId) {
             $artikelSoorten = $this->DataHandler->readsData('SELECT DISTINCT * FROM artikel_soorten')->fetchAll();
 
@@ -44,13 +53,13 @@
             $html .= '</tr>';
 
             foreach ($artikelSoorten as $artikelSoortenKey => $artikelSoortenValue) {
-                $html .= '<tr><td colspan="4">' . $artikelSoortenValue['omschrijving'] . '</td></tr>';
 
+                $html         .= '<tr><td colspan="4">' . $artikelSoortenValue['omschrijving'] . '</td></tr>';
                 $artikelTypes = $this->DataHandler->readsData('SELECT DISTINCT * FROM artikel_types WHERE artikelsoort_id = ' . $artikelSoortenValue["artikelsoort_id"] . '')->fetchAll();
 
                 foreach ($artikelTypes as $artikelTypeKey => $artikelTypeValue) {
-                    $html .= '<tr><td colspan="1"><td colspan="3">' . $artikelTypeValue['omschrijving'] . '</td></tr>';
 
+                    $html      .= '<tr><td colspan="1"><td colspan="3">' . $artikelTypeValue['omschrijving'] . '</td></tr>';
                     $artikelen = $this->DataHandler->readsData('SELECT DISTINCT * FROM artikelen WHERE artikeltype_id = ' . $artikelTypeValue["artikeltype_id"] . '')->fetchAll();
 
                     foreach ($artikelen as $artikelKey => $artikelValue) {
