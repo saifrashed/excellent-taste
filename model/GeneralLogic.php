@@ -55,16 +55,18 @@
             foreach ($artikelSoorten as $artikelSoortenKey => $artikelSoortenValue) {
 
                 $html         .= '<tr><td colspan="4">' . $artikelSoortenValue['omschrijving'] . '</td></tr>';
+
                 $artikelTypes = $this->DataHandler->readsData('SELECT DISTINCT * FROM artikel_types WHERE artikelsoort_id = ' . $artikelSoortenValue["artikelsoort_id"] . '')->fetchAll();
 
                 foreach ($artikelTypes as $artikelTypeKey => $artikelTypeValue) {
 
                     $html      .= '<tr><td colspan="1"><td colspan="3">' . $artikelTypeValue['omschrijving'] . '</td></tr>';
+
                     $artikelen = $this->DataHandler->readsData('SELECT DISTINCT * FROM artikelen WHERE artikeltype_id = ' . $artikelTypeValue["artikeltype_id"] . '')->fetchAll();
 
                     foreach ($artikelen as $artikelKey => $artikelValue) {
                         $html .= '<tr><td colspan="2"></td>';
-                        $html .= '<td><a class="btn btn-primary" href="' . BESTELLINGEN_UPDATE . '/' . $orderId . '/' . $artikelValue['artikel_id'] . '">' . $artikelValue['omschrijving'] . '</a></td>';
+                        $html .= '<td><a class="btn btn-light" href="' . BESTELLINGEN_UPDATE . '/' . $orderId . '/' . $artikelValue['artikel_id'] . '">' . $artikelValue['omschrijving'] . '</a></td>';
                         $html .= '</tr>';
                     }
                 }
@@ -73,6 +75,20 @@
             $html .= '</table>';
 
             return $html;
+        }
+
+        /**
+         * Validates strings
+         *
+         * @param $data
+         * @return mixed|string
+         */
+        public function prepareData($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            $data = filter_var($data, FILTER_SANITIZE_STRING);
+            return $data;
         }
 
         public function __destruct() {

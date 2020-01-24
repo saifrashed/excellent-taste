@@ -27,11 +27,11 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=RESERVERINGEN_READ?>">Reserveringen</a>
+                        <a class="nav-link" href="<?= RESERVERINGEN_READ ?>">Reserveringen</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=BESTELLINGEN_READ?>">Bestellingen</a>
+                        <a class="nav-link" href="<?= BESTELLINGEN_READ ?>">Bestellingen</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -40,16 +40,22 @@
                             Overzichten
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Kok</a>
-                            <a class="dropdown-item" href="#">Barman</a>
-                            <a class="dropdown-item" href="#">Ober</a>
+                            <a class="dropdown-item" href="<?=OVERZICHTEN_KOK?>">Kok</a>
+                            <a class="dropdown-item" href="<?=OVERZICHTEN_BARMAN?>">Barman</a>
+                            <a class="dropdown-item" href="<?=OVERZICHTEN_OBER?>">Ober</a>
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Gegevens</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Gegevens
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Klanten</a>
+                            <a class="dropdown-item" href="#">Artikel</a>
+                        </div>
                     </li>
-
                 </ul>
             </div>
         </nav>

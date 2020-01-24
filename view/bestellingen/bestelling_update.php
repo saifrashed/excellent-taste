@@ -61,6 +61,8 @@
 
             </table>
 
+            <button class="btn btn-light" onclick="javascript:window.print()"> Print <i class="fas fa-print"></i></button>
+
         <?php } else { ?>
 
             <div class="alert alert-danger" role="alert">

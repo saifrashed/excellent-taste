@@ -26,9 +26,15 @@
          */
         public function create() {
 
-            if(!empty($_REQUEST['tafelnummer']) && !empty($_REQUEST['datum']) && !empty($_REQUEST['tijd'])) {
-                $newBestelling = $this->BestellingenLogic->create($_REQUEST['tafelnummer'], $_REQUEST['datum'], $_REQUEST['tijd']);
-                header('Location: '. BESTELLINGEN_UPDATE.'/'.$newBestelling);
+            if (!empty($_REQUEST['tafelnummer']) && !empty($_REQUEST['datum']) && !empty($_REQUEST['tijd'])) {
+
+                $tafelnummer = $this->GeneralLogic->prepareData($_REQUEST['tafelnummer']);
+                $datum       = $this->GeneralLogic->prepareData($_REQUEST['datum']);
+                $tijd        = $this->GeneralLogic->prepareData($_REQUEST['tijd']);
+
+                $newBestelling = $this->BestellingenLogic->create($tafelnummer, $datum, $tijd);
+
+                header('Location: ' . BESTELLINGEN_UPDATE . '/' . $newBestelling);
             }
 
             include './view/header.php';
@@ -51,9 +57,9 @@
         /*
          * Updates a order
          */
-        public function update($orderId, $articleId = FALSE) {
+        public function update($orderId, $articleId = false) {
 
-            if($articleId) {
+            if ($articleId) {
                 $this->BestellingenLogic->update($orderId, $articleId);
             }
 
@@ -67,17 +73,6 @@
             include './view/footer.php';
         }
 
-        /*
-         * Deletes a order
-         */
-        public function delete($orderId) {
-
-            $result = $this->BestellingenLogic->delete($orderId);
-
-            include './view/header.php';
-            include './view/bestellingen/bestelling_delete.php';
-            include './view/footer.php';
-        }
 
         public function __destruct() {
         }

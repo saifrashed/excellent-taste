@@ -44,13 +44,6 @@ class BestellingenLogic {
         }
     }
 
-    /**
-     * Delete business logic for a order
-     */
-    public function delete($orderId) {
-        return $this->DataHandler->deleteData('DELETE FROM bestellingen WHERE bestelling_id="'.$orderId.'";');
-    }
-
     public function __destruct() {
 
     }
