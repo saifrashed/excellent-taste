@@ -8,7 +8,7 @@
                 <input  type="hidden" name="datum" value="<?=date('Y/m/d')?>">
                 <input  type="hidden" name="tijd" value="<?=date('H:i:s')?>">
 
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-plus"></i></button>
+                <button class="btn btn-light my-2 my-sm-0" type="submit"><i class="fas fa-plus"></i></button>
             </form>
         </div>
 

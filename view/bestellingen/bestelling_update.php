@@ -3,7 +3,7 @@
         <h1>Pas bestelling aan</h1>
     </div>
 
-    <div class="col-xs-12 col-md-6" style="display: inline-block">
+    <div id="bon" class="col-xs-12 col-md-6" style="display: inline-block">
 
         <?php if ($bestelling) { ?>
 
